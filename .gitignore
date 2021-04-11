@@ -38,6 +38,4 @@ node_modules
 .idea
 
 # test file
-src/test.html
-
 src/t.html

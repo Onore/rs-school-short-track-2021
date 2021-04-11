@@ -18,7 +18,9 @@
  */
 
 function removeKFromList(/* l, k */) {
-  throw new Error('Not implemented');
+  // console.log('--->', l, k);
+  // while(l.value !== k) {
+  // }
 }
 
 module.exports = removeKFromList;
