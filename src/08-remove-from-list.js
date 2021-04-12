@@ -18,19 +18,15 @@
  */
 
 function removeKFromList(l, k) {
-  console.log('--->', l, k);
-  console.log('--->', l.value);
-  console.log(typeof l.value);
-  console.log(typeof k);
-  // let list = l;
-  if (l.value === k) {
-    console.log('--->++++');
-    // const list = l.next;
+  let list = l;
+  while (list !== null) {
+    if (list.value === k) {
+      list.value = list.next.value;
+      list.next = list.next.next;
+    }
+    list = list.next;
   }
-  // console.log('-res-->', list);
-  // return list;
-  // while(l.value !== k) {
-  // }
+  return l;
 }
 
 module.exports = removeKFromList;
