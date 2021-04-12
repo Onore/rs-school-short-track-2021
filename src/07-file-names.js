@@ -15,15 +15,25 @@
  */
 
 function renameFiles(arr) {
-  const res = arr.map((v, k) => {
-    const n = arr.filter((el, idx) => {
-      if (idx < k && el === v) {
-        return true;
-      }
-      return false;
-    }).length;
-    return n > 0 ? `${v}(${n})` : v;
+  let res = [];
+  const map = new Map();
+
+  res = arr.map((v) => {
+    if (!map.has(v)) {
+      map.set(v, 0);
+    } else {
+      map.set(v, map.get(v) + 1);
+    }
+
+    if (map.get(v) > 0) {
+      return `${v}(${map.get(v)})`;
+    }
+    return v;
   });
+
+  if ([...map.values()].filter((el) => el > 0).length) {
+    return renameFiles(res);
+  }
 
   return res;
 }
