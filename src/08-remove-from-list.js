@@ -17,8 +17,18 @@
  * }
  */
 
-function removeKFromList(/* l, k */) {
-  // console.log('--->', l, k);
+function removeKFromList(l, k) {
+  console.log('--->', l, k);
+  console.log('--->', l.value);
+  console.log(typeof l.value);
+  console.log(typeof k);
+  // let list = l;
+  if (l.value === k) {
+    console.log('--->++++');
+    // const list = l.next;
+  }
+  // console.log('-res-->', list);
+  // return list;
   // while(l.value !== k) {
   // }
 }
