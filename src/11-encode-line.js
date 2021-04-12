@@ -10,28 +10,23 @@
  */
 function encodeLine(s) {
   let res = '';
-  const arr = s.split('');
-  let nSkip = 0;
+  let n = 0;
+  let count = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    // Skip the same element(s)
-    if (nSkip > 0) {
-      nSkip--;
-    } else {
-      const count = arr.filter((v, k) => {
-        if (v === arr[i] && arr[k + 1] === arr[i]) {
-          return true;
+  s.split('').forEach((el, key, arr) => {
+    if (key >= n) {
+      for (let k = key; k <= arr.length; k++) {
+        if (arr[k] === el) {
+          count++;
+        } else {
+          n = k;
+          res += count === 1 ? el : count + el;
+          count = 0;
+          break;
         }
-        return false;
-      }).length;
-      if (count > 1) {
-        res += count + arr[i];
-        nSkip = count - 1;
-      } else {
-        res += arr[i];
       }
     }
-  }
+  });
 
   return res;
 }
